@@ -11,11 +11,14 @@ import Tab2Screen from './Tab2Screen';
 import DetailScreen from './DetailScreen';
 
 export const screens = {
+  main: 'premiumContact.main',
+  auth: 'premiumContact.auth',
   overlay: 'premiumContact.overlay',
   splash: 'premiumContact.splash',
   login: 'premiumContact.login',
   register: 'premiumContact.register',
   forgot: 'premiumContact.forgot',
+  tabs: 'premiumContact.tabs',
   tab1: 'premiumContact.tab1',
   tab2: 'premiumContact.tab2',
   detail: 'premiumContact.detail'

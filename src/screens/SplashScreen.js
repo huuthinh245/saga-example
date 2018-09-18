@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
 
-import { screens } from '../screens/register';
+import { screens } from './index';
 import { goToAuth, pushScreen } from '../navigation/actions';
 
 class Screen extends Component {

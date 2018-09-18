@@ -4,7 +4,7 @@ import { Navigation } from 'react-native-navigation';
 import { connect } from 'react-redux';
 
 import { popScreen, popToRoot } from '../navigation/actions';
-import { screens } from './register';
+import { screens } from './index';
 
 export default class Screen extends Component {
   constructor(props) {

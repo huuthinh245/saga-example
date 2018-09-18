@@ -4,7 +4,7 @@ import { Navigation } from 'react-native-navigation';
 import { connect } from 'react-redux';
 
 import { goToAuth, pushScreen, showOverlay } from '../navigation/actions';
-import { screens } from './register';
+import { screens } from './index';
 
 export default class Screen extends Component {
   constructor(props) {
@@ -42,17 +42,10 @@ export default class Screen extends Component {
     return (
       <View style={{ backgroundColor: 'yellow', flex: 1 }}>
         <TouchableOpacity
-          onPress={() => pushScreen(this.props.componentId, detailLayout)}
+          onPress={() => pushScreen(screens.tabs, detailLayout)}
           style={{ padding: 20, backgroundColor: 'red', margin: 20 }}
         >
           <Text>Go to detail</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          onPress={() => pushScreen(this.props.componentId, registerLayout)}
-          style={{ padding: 20, backgroundColor: 'red', margin: 20 }}
-        >
-          <Text>Go to register</Text>
         </TouchableOpacity>
 
         <TouchableOpacity

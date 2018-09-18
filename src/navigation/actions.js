@@ -1,5 +1,5 @@
 import { Navigation } from 'react-native-navigation';
-import { screens } from '../screens/register';
+import { screens } from '../screens';
 
 import alert from '../assets/icon1.png';
 import auth from '../assets/icon2.png';
@@ -8,11 +8,11 @@ export const goToHome = ({ titles = [] }: Object = {}) =>
   Navigation.setRoot({
     root: {
       stack: {
-        id: 'Main',
+        id: screens.main,
         children: [
           {
             bottomTabs: {
-              id: 'MainTabs',
+              id: screens.tabs,
               children: [
                 {
                   component: {
@@ -50,7 +50,7 @@ export const goToAuth = ({ loginTitle = 'Login Header' }: Object = {}) =>
   Navigation.setRoot({
     root: {
       stack: {
-        id: 'Auth',
+        id: screens.auth,
         children: [
           {
             component: {
@@ -79,7 +79,10 @@ export const showOverlay = async () =>
 
 export const dismissOverlay = async componentId => Navigation.dismissOverlay(componentId);
 export const pushScreen = async (componentId, layout) => Navigation.push(componentId, layout);
-export const popScreen = async componentId => Navigation.pop(componentId);
+export const popScreen = async (componentId, mergeOptions) =>
+  Navigation.pop(componentId, mergeOptions);
+export const popToScreen = async (componentId, mergeOptions) =>
+  Navigation.popTo(componentId, mergeOptions);
 export const popToRoot = async componentId => Navigation.popToRoot(componentId);
 export const setStackRoot = async (componentId, params) =>
   Navigation.setStackRoot(componentId, params);

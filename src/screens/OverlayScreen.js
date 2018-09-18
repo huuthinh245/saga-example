@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
-import { View, TouchableWithoutFeedback } from 'react-native';
-import { dismissModal } from '../navigation/actions';
+import { View } from 'react-native';
 
 export default class Screen extends Component {
   render() {
-    return (
-      <TouchableWithoutFeedback onPress={() => dismissModal(this.props.componentId)}>
-        <View style={{ backgroundColor: 'rgba(0,0,0,0.4)', flex: 1 }} />
-      </TouchableWithoutFeedback>
-    );
+    return <View style={{ backgroundColor: 'rgba(0,0,0,0.4)', flex: 1 }} />;
   }
 }
