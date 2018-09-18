@@ -8,7 +8,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.1'
+        classpath 'com.android.tools.build:gradle:3.1.4'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -18,23 +18,25 @@ buildscript {
 allprojects {
     repositories {
         mavenLocal()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
         jcenter()
         maven {
             // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
             url "$rootDir/../node_modules/react-native/android"
         }
-        maven { url 'https://jitpack.io' }
         google()
     }
 }
 
+
 ext {
+    applicationId = "com.dfm.projects.PremiumContact"
     buildToolsVersion = "27.0.3"
     minSdkVersion = 19
     compileSdkVersion = 27
     targetSdkVersion = 27
     supportLibVersion = "27.0.2"
-    applicationId = "com.dfm.premiumcontact"
-    versionCode = 1
-    versionName = "1.0.0"
+    versionCode = 26
+    versionName = "2.0.6"
 }

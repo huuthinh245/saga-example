@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-
+import { Navigation } from 'react-native-navigation';
 import { connect } from 'react-redux';
 
 import { goToAuth, pushScreen, showOverlay } from '../navigation/actions';
 import { screens } from './register';
 
 export default class Screen extends Component {
+  constructor(props) {
+    super(props);
+    Navigation.events().bindComponent(this);
+  }
+
   render() {
     detailLayout = {
       component: {
@@ -14,7 +19,20 @@ export default class Screen extends Component {
         options: {
           topBar: {
             title: {
-              text: 'Detail'
+              text: 'My title'
+            }
+          }
+        }
+      }
+    };
+
+    registerLayout = {
+      component: {
+        name: screens.register,
+        options: {
+          topBar: {
+            title: {
+              text: 'Register'
             }
           }
         }
@@ -28,6 +46,13 @@ export default class Screen extends Component {
           style={{ padding: 20, backgroundColor: 'red', margin: 20 }}
         >
           <Text>Go to detail</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={() => pushScreen(this.props.componentId, registerLayout)}
+          style={{ padding: 20, backgroundColor: 'red', margin: 20 }}
+        >
+          <Text>Go to register</Text>
         </TouchableOpacity>
 
         <TouchableOpacity

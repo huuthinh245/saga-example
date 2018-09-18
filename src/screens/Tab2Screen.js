@@ -5,8 +5,14 @@ import { connect } from 'react-redux';
 
 import { goToAuth, pushScreen } from '../navigation/actions';
 import { screens } from './register';
+import { Navigation } from 'react-native-navigation';
 
 export default class Screen extends Component {
+  constructor(props) {
+    super(props);
+    Navigation.events().bindComponent(this);
+  }
+
   render() {
     detailLayout = {
       component: {

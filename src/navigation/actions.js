@@ -77,8 +77,7 @@ export const showOverlay = async () =>
     }
   });
 
-export const dismissOverlay = async componentId =>
-  Navigation.dismissOverlay(this.props.componentId);
+export const dismissOverlay = async componentId => Navigation.dismissOverlay(componentId);
 export const pushScreen = async (componentId, layout) => Navigation.push(componentId, layout);
 export const popScreen = async componentId => Navigation.pop(componentId);
 export const popToRoot = async componentId => Navigation.popToRoot(componentId);

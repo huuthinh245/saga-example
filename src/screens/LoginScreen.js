@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-
+import { Navigation } from 'react-native-navigation';
 import { connect } from 'react-redux';
 
 import { goToHome, pushScreen } from '../navigation/actions';
 import { screens } from './register';
 
 export default class Screen extends Component {
+  constructor(props) {
+    super(props);
+    Navigation.events().bindComponent(this);
+  }
+
   render() {
     registerLayout = {
       component: {

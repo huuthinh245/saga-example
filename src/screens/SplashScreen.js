@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
 
-import { goToAuth } from '../navigation/actions';
+import { screens } from '../screens/register';
+import { goToAuth, pushScreen } from '../navigation/actions';
 
 class Screen extends Component {
   constructor(props) {
@@ -32,6 +33,20 @@ class Screen extends Component {
     setTimeout(() => {
       goToAuth();
     }, 3000);
+
+    detailLayout = {
+      component: {
+        name: screens.detail,
+        options: {
+          topBar: {
+            title: {
+              text: 'Detail'
+            }
+          }
+        }
+      }
+    };
+
     return (
       <View
         style={{
@@ -41,6 +56,9 @@ class Screen extends Component {
           justifyContent: 'center'
         }}
       >
+        <TouchableOpacity onPress={() => pushScreen(this.props.componentId, detailLayout)}>
+          <Text>Go to detail</Text>
+        </TouchableOpacity>
         <Text>{text}</Text>
       </View>
     );
