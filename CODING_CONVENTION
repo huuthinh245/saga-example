@@ -1,9 +1,0 @@
-- import realative after absolute 1 line
-- import/export multi values on multi lines ( > 2 values) 
-- functionName inside class always start with _
-
-REDUX Files: 
-  - named file: actions.js, actionTypes.js, epics.js, reducer.js
-  - always export const in files
-  - always define successEpic and failEpic
-  - export epic value has already combined

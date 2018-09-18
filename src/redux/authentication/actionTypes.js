@@ -1,3 +1,0 @@
-export const REGISTER = 'REGISTER';
-export const REGISTER_SUCCESS = 'REGISTER_SUCCESSS';
-export const REGISTER_FAIL = 'REGISTER_FAIL';

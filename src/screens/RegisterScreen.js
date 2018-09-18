@@ -2,48 +2,40 @@ import React, { Component } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { navActions } from 'dn-utils';
-import { definedScreens } from './register';
 
+import { popScreen, pushScreen } from '../navigation/actions';
+import { screens } from './register';
 
-const { pop, push } = navActions;
-
-class Screen extends Component {
+export default class Screen extends Component {
   render() {
-    const registerScreen = {
-      screen: definedScreens.forgot,
-      title: 'forgot pushed'
+    const forgotLayout = {
+      component: {
+        name: screens.forgot,
+        options: {
+          topBar: {
+            title: {
+              text: 'Forgot password'
+            }
+          }
+        }
+      }
     };
     return (
       <View style={{ backgroundColor: 'yellow', flex: 1 }}>
         <TouchableOpacity
-          onPress={() => {
-            this.props.pop();
-          }}
-          style={{ padding: 20, backgroundColor: 'red' }}
-        >
-          <Text>Back</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => {
-            this.props.push(registerScreen);
-          }}
+          onPress={() => pushScreen(this.props.componentId, forgotLayout)}
           style={{ padding: 20, backgroundColor: 'red', margin: 20 }}
         >
-          <Text>Register</Text>
+          <Text>Forgot password</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={() => popScreen(this.props.componentId)}
+          style={{ padding: 20, backgroundColor: 'red', margin: 20 }}
+        >
+          <Text>Back</Text>
         </TouchableOpacity>
       </View>
     );
   }
 }
-
-const mapDispatchToProps = dispatch => {
-  return bindActionCreators(
-    { pop, push },
-    dispatch
-  );
-};
-
-export default connect(null, mapDispatchToProps)(Screen);
-

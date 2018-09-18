@@ -1,43 +1,50 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
-
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { navActions, navTypes, setNav } from 'dn-utils';
+import { Navigation } from 'react-native-navigation';
 
-
-const { changeRoot, push } = navActions;
+import { goToAuth } from '../navigation/actions';
 
 class Screen extends Component {
   constructor(props) {
     super(props);
-    this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+    this.state = {
+      countDown: 3
+    };
+    Navigation.events().bindComponent(this);
   }
 
-  onNavigatorEvent(event) {
-    if(event.id === 'willAppear') {
-      setNav(this.props.navigator);
-    }
+  componentDidMount() {
+    console.log(this.props);
   }
+
+  componentDidAppear = () => {
+    // alert('appear');
+  };
+
+  componentDidDisappear = () => {
+    // alert('did appear');
+  };
 
   render() {
+    const { countDown } = this.state;
+    const text = `Splash screen, it will be disappear after ${countDown}s`;
     setTimeout(() => {
-      this.props.changeRoot(navTypes.root.GO_TO_LOGIN);
+      goToAuth();
     }, 3000);
     return (
-      <View style={{ backgroundColor: 'green', flex: 1 }}>
-        <Text>Splash screen, it will be disappear after 3s</Text>
+      <View
+        style={{
+          backgroundColor: 'green',
+          flex: 1,
+          alignItems: 'center',
+          justifyContent: 'center'
+        }}
+      >
+        <Text>{text}</Text>
       </View>
     );
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return bindActionCreators(
-    { push, changeRoot },
-    dispatch
-  );
-};
-
-export default connect(null, mapDispatchToProps)(Screen);
-
+export default connect()(Screen);

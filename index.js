@@ -1,5 +1,18 @@
+import { Navigation } from 'react-native-navigation';
+import { registerScreens, screens } from './src/screens/register';
+import { configProps } from './overrideDefaultComponentsProps';
+import { store } from './src/redux/reducers';
 
-import App from './src';
+console.disableYellowBox = true;
+configProps();
+registerScreens(store);
 
-new App();
-
+Navigation.events().registerAppLaunchedListener(() => {
+  Navigation.setRoot({
+    root: {
+      component: {
+        name: screens.splash
+      }
+    }
+  });
+});

@@ -9,19 +9,12 @@ import { screens } from './register';
 export default class Screen extends Component {
   render() {
     return (
-      <View style={{ backgroundColor: 'yellow', flex: 1 }}>
+      <View style={{ backgroundColor: 'blue', flex: 1 }}>
         <TouchableOpacity
           onPress={() => popScreen(this.props.componentId)}
           style={{ padding: 20, backgroundColor: 'red', margin: 20 }}
         >
-          <Text>Back</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          onPress={() => popToRoot(this.props.componentId)}
-          style={{ padding: 20, backgroundColor: 'red', margin: 20 }}
-        >
-          <Text>Back to root</Text>
+          <Text>Back Back</Text>
         </TouchableOpacity>
       </View>
     );

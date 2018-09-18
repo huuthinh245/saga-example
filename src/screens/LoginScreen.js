@@ -2,79 +2,59 @@ import React, { Component } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { navActions, navTypes, setNav, getNav } from 'dn-utils';
-import { definedScreens } from '../screens/register';
 
+import { goToHome, pushScreen } from '../navigation/actions';
+import { screens } from './register';
 
-const { changeRoot, push } = navActions;
-
-class Screen extends Component {
-  constructor(props) {
-    super(props);
-    this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
-  }
-
-  onNavigatorEvent(event) {
-    if(event.id === 'willAppear') {
-      if(getNav().screenInstanceID !== this.props.navigator.screenInstanceID) {
-        console.log('vao day');
-        setNav(this.props.navigator);
-      }
-    }
-  }
-
+export default class Screen extends Component {
   render() {
-    const registerScreen = {
-      screen: definedScreens.register,
-      title: 'register pushed'
+    registerLayout = {
+      component: {
+        name: screens.register,
+        options: {
+          topBar: {
+            title: {
+              text: 'Register Account'
+            }
+          }
+        }
+      }
     };
-
-    const forgotScreen = {
-      screen: definedScreens.forgot,
-      title: 'forgot pushed'
+    forgotLayout = {
+      component: {
+        name: screens.forgot,
+        options: {
+          topBar: {
+            title: {
+              text: 'Forgot password'
+            }
+          }
+        }
+      }
     };
-
     return (
       <View style={{ backgroundColor: 'yellow', flex: 1 }}>
         <TouchableOpacity
-          onPress={() => {
-            this.props.changeRoot(navTypes.root.LOGIN_SUCCESS);
-          }}
+          onPress={() => goToHome()}
           style={{ padding: 20, backgroundColor: 'red', margin: 20 }}
         >
           <Text>Login success by redux</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
-          onPress={() => {
-            this.props.push(registerScreen);
-          }}
+          onPress={() => pushScreen(this.props.componentId, registerLayout)}
           style={{ padding: 20, backgroundColor: 'red', margin: 20 }}
         >
           <Text>Register</Text>
         </TouchableOpacity>
-          
+
         <TouchableOpacity
-          onPress={() => {
-            this.props.push(forgotScreen);
-          }}
+          onPress={() => pushScreen(this.props.componentId, forgotLayout)}
           style={{ padding: 20, backgroundColor: 'red', margin: 20 }}
         >
           <Text>Forgot</Text>
         </TouchableOpacity>
-
       </View>
     );
   }
 }
-
-const mapDispatchToProps = dispatch => {
-  return bindActionCreators(
-    { push, changeRoot },
-    dispatch
-  );
-};
-
-export default connect(null, mapDispatchToProps)(Screen);
-
