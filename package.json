@@ -4,7 +4,13 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "test": "jest",
+    "android--release": "ENVFILE=.env.prod react-native run-android --variant=release",
+    "android": "ENVFILE=.env.prod react-native run-android --variant=release",
+    "ios--release": "ENVFILE=.env.prod react-native run-ios --configuration Release",
+    "ios": "react-native run-ios",
+    "ios--release--device ": "ENVFILE=.env.prod react-native run-ios --configuration Release --device",
+    "ios--device": "ENVFILE=.env.prod react-native run-android --device"
   },
   "dependencies": {
     "apisauce": "^0.16.0",
@@ -16,10 +22,13 @@
     "react": "16.3.1",
     "react-native": "^0.55.4",
     "react-native-actionsheet": "^2.4.2",
+    "react-native-code-push": "^5.4.2",
+    "react-native-config": "^0.11.5",
     "react-native-global-props": "^1.1.3",
     "react-native-i18n": "^2.0.15",
     "react-native-keyboard-aware-scroll-view": "^0.4.3",
     "react-native-languages": "^3.0.0",
+    "react-native-maps": "^0.21.0",
     "react-native-navigation": "^2.0.2555",
     "react-native-restart": "0.0.6",
     "react-native-share": "^1.0.26",
@@ -38,20 +47,21 @@
   },
   "devDependencies": {
     "babel-eslint": "^8.0.3",
+    "babel-jest": "22.4.3",
+    "babel-preset-react-native": "4.0.0",
     "babel-preset-react-native-stage-0": "^1.0.1",
     "eslint": "^4.18.1",
     "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-prettier": "^3.0.1",
     "eslint-plugin-import": "^2.9.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.7.0",
-    "jest-react-native": "^18.0.0",
-    "babel-jest": "22.4.3",
-    "babel-preset-react-native": "4.0.0",
     "jest": "22.4.3",
-    "react-test-renderer": "16.3.1",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-config-prettier": "^3.0.1",
-    "prettier": "^1.14.2"
+    "jest-react-native": "^18.0.0",
+    "prettier": "^1.14.2",
+    "react-native-schemes-manager": "^1.0.5",
+    "react-test-renderer": "16.3.1"
   },
   "jest": {
     "preset": "react-native"

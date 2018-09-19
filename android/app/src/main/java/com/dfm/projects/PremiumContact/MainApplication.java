@@ -1,8 +1,10 @@
 package com.dfm.projects.PremiumContact;
 
+import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
+import com.microsoft.codepush.react.CodePush;
 
 import com.reactnativenavigation.NavigationApplication;
 import com.reactnativenavigation.react.NavigationReactNativeHost;
@@ -30,7 +32,8 @@ public class MainApplication extends NavigationApplication {
 
     protected List<ReactPackage> getPackages() {
         return Arrays.<ReactPackage>asList(
-                new VectorIconsPackage()
+            new VectorIconsPackage(),
+            new ReactNativeConfigPackage()
         );
     }
 

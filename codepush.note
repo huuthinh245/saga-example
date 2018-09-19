@@ -1,0 +1,16 @@
+*** IOS *** named PC-IOS
+
+│ Name       │ Deployment Key                                                   │
+├────────────┼──────────────────────────────────────────────────────────────────┤
+│ Production │ rgeHrNjIb5U754jH7ozfzuZeBlFwe33090fa-d9aa-41c0-9dc3-efe1b345a6bb │
+├────────────┼──────────────────────────────────────────────────────────────────┤
+│ Staging    │ 2JSMxsxPtc7aBAEgWilFjTXvbGhCe33090fa-d9aa-41c0-9dc3-efe1b345a6bb 
+
+
+*** ANDROID *** named PC-ANDROID
+
+│ Name       │ Deployment Key                                                   │
+├────────────┼──────────────────────────────────────────────────────────────────┤
+│ Production │ 8u0L7u-GREB8IcaWR4qU4nsUft4ue33090fa-d9aa-41c0-9dc3-efe1b345a6bb │
+├────────────┼──────────────────────────────────────────────────────────────────┤
+│ Staging    │ qxM_XLpfh3YcdD5ALHyRFR89NXlHe33090fa-d9aa-41c0-9dc3-efe1b345a6bb 

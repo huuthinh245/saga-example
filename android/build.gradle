@@ -33,7 +33,7 @@ allprojects {
 ext {
     applicationId = "com.dfm.projects.PremiumContact"
     buildToolsVersion = "27.0.3"
-    minSdkVersion = 19
+    minSdkVersion = 21
     compileSdkVersion = 27
     targetSdkVersion = 27
     supportLibVersion = "27.0.2"

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
+import Config from 'react-native-config';
 
 import { screens } from './index';
 import { goToAuth, pushScreen } from '../navigation/actions';
@@ -31,7 +32,7 @@ class Screen extends Component {
     const { countDown } = this.state;
     const text = `Splash screen, it will be disappear after ${countDown}s`;
     setTimeout(() => {
-      goToAuth();
+      // goToAuth();
     }, 3000);
 
     detailLayout = {
@@ -46,7 +47,7 @@ class Screen extends Component {
         }
       }
     };
-
+    const env = `API_URL=${Config.ENV}`;
     return (
       <View
         style={{
@@ -56,9 +57,7 @@ class Screen extends Component {
           justifyContent: 'center'
         }}
       >
-        <TouchableOpacity onPress={() => pushScreen(this.props.componentId, detailLayout)}>
-          <Text>Go to detail</Text>
-        </TouchableOpacity>
+        <Text>{env}</Text>
         <Text>{text}</Text>
       </View>
     );
