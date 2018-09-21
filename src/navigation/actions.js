@@ -23,7 +23,11 @@ export const goToHome = ({ titles = [] }: Object = {}) =>
                         text: titles[0] || 'tab 1',
                         icon: alert
                       },
-                      topBar: { visible: false }
+                      topBar: {
+                        title: {
+                          text: 'Tab 1'
+                        }
+                      }
                     }
                   }
                 },
@@ -36,7 +40,11 @@ export const goToHome = ({ titles = [] }: Object = {}) =>
                         fontSize: 12,
                         icon: auth
                       },
-                      topBar: { visible: false }
+                      topBar: {
+                        title: {
+                          text: 'Tab 2'
+                        }
+                      }
                     }
                   }
                 }
