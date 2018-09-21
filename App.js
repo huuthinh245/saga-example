@@ -50,7 +50,7 @@ class App extends React.Component {
     const token = await AsyncStorage.getItem('token');
 
     if (token) {
-      AuthModel.getInstance().setToken(token[1]);
+      AuthModel.setToken(token);
     }
   };
 

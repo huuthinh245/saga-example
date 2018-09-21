@@ -22,7 +22,8 @@ export const goToHome = ({ titles = [] }: Object = {}) =>
                         fontSize: 12,
                         text: titles[0] || 'tab 1',
                         icon: alert
-                      }
+                      },
+                      topBar: { visible: false }
                     }
                   }
                 },
@@ -34,7 +35,8 @@ export const goToHome = ({ titles = [] }: Object = {}) =>
                         text: titles[1] || 'tab 2',
                         fontSize: 12,
                         icon: auth
-                      }
+                      },
+                      topBar: { visible: false }
                     }
                   }
                 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, AsyncStorage, Alert } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { connect } from 'react-redux';
 
@@ -11,6 +11,21 @@ export default class Screen extends Component {
     super(props);
     Navigation.events().bindComponent(this);
   }
+
+  _logout = () => {
+    Alert.alert('Log out', 'Are you sure to log out ?', [
+      {
+        text: 'OK',
+        onPress: async () => {
+          await AsyncStorage.removeItem('token');
+          goToAuth();
+        }
+      },
+      {
+        text: 'Cancel'
+      }
+    ]);
+  };
 
   render() {
     detailLayout = {
@@ -49,14 +64,7 @@ export default class Screen extends Component {
         </TouchableOpacity>
 
         <TouchableOpacity
-          onPress={() => showOverlay()}
-          style={{ padding: 20, backgroundColor: 'red', margin: 20 }}
-        >
-          <Text>Show overlay</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          onPress={() => goToAuth()}
+          onPress={this._logout}
           style={{ padding: 20, backgroundColor: 'red', margin: 20 }}
         >
           <Text>Logout</Text>

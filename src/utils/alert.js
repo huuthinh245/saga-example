@@ -1,6 +1,6 @@
 import { Alert } from 'react-native';
 
-const alertTitles: Object = {
+const alertTitles = {
   title: 'Alert',
   ok: 'OK',
   cancel: 'Cancel',
@@ -8,12 +8,16 @@ const alertTitles: Object = {
   warning: 'Warning',
   success: 'Success',
   error: 'Error',
-  failure: 'Failure'
+  failure: 'Failure',
+
+  connectionFailure: 'Connection Failure',
 };
 
-const alertContents: Object = {};
+const alertContents = {
+  noNetwork: 'Device is offline'
+};
 
-const _alert: Function = (
+const _alert = (
   title = alertTitles.title,
   content = '',
   buttons = [{ text: alertTitles.ok, onPress: () => {} }]
@@ -21,4 +25,6 @@ const _alert: Function = (
   Alert.alert(title, content, buttons);
 };
 
-export { alertTitles, alertContents, _alert };
+const alertNoNetwork = () => Alert.alert(alertTitles.connectionFailure, alertContents.noNetwork, [{ text: alertTitles.ok, onPress: () => {} }]);
+
+export { alertTitles, alertContents, _alert, alertNoNetwork };

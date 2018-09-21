@@ -15,19 +15,19 @@ export default class Auth {
     return this.savedInstance;
   }
 
-  getToken() {
+  static getToken() {
     return this.token;
   }
 
-  getId() {
+  static getId() {
     return this.id;
   }
 
-  setToken(token) {
+  static setToken(token) {
     this.token = token;
   }
 
-  setId(id) {
+  static setId(id) {
     this.id = id;
   }
 }

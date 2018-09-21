@@ -4,18 +4,24 @@ import { Navigation } from 'react-native-navigation';
 import { keysAPI, keysTypes } from '../actions/keys';
 import { _alert, alertTitles, alertContents } from '../utils/alert';
 import { goToAuth } from '../navigation/actions';
+import AuthModel from '../models/Auth';
+import { authTypes } from '../actions/auth';
 
-function* fetchKeys({ payload }) {
+function* fetchKeys() {
   try {
     const resp = yield call(keysAPI.fetchKeys);
-    payload.dismissOverlay();
+
     // timeout or not responding ...
     if (!resp.status) {
       _alert(alertTitles.error, resp.problem);
     }
     if (resp.status === 200) {
-      // goToAuth();
-      Navigation.dismissOverlay();
+      const token = AuthModel.getToken();
+      if (token) {
+        yield put({ type: authTypes.GET_ME, payload: { token } });
+      } else {
+        goToAuth();
+      }
       yield put({ type: keysTypes.FETCH_KEYS_SUCCESS, payload: resp.data.data });
     } else {
       _alert(alertTitles.error, resp.data.message);

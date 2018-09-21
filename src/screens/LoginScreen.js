@@ -19,6 +19,7 @@ import img from '../assets/images/Loading.png';
 import { showOverlay, dismissOverlay } from '../navigation/actions';
 import Auth from '../models/Auth';
 import { authActionsToDispatch } from '../actions/auth';
+import { alertNoNetwork } from '../utils/alert';
 
 class LoginScreen extends Component {
   constructor(props) {
@@ -29,30 +30,18 @@ class LoginScreen extends Component {
     };
   }
 
-  async componentDidMount() {
-    const { isConnected, dispatch, componentId } = this.props;
-    const { token } = Auth.getInstance();
-
-    if (isConnected && token) {
-      showOverlay();
-      const dismiss = () => dismissOverlay(componentId);
-      dispatch(authActionsToDispatch.getMe({ token, dismissOverlay: dismiss }));
-    }
-  }
-
   _login = () => {
     const { username, password } = this.state;
     const { auth } = this.props;
 
-    const { isConnected, dispatch, componentId } = this.props;
-    if (isConnected && !auth.fetching) {
-      showOverlay();
-      const dismiss = () => dismissOverlay(componentId);
+    const { isConnected, dispatch } = this.props;
+    if (!isConnected) {
+      alertNoNetwork();
+    } else if (!auth.fetching) {
       dispatch(
         authActionsToDispatch.getToken({
           username,
-          password,
-          dismissOverlay: dismiss
+          password
         })
       );
     }
@@ -117,8 +106,8 @@ class LoginScreen extends Component {
 
         <TouchableOpacity
           style={{
-            paddingVertical: 20,
-            paddingHorizontal: 50,
+            height: 60,
+            width: '70%',
             backgroundColor: 'blue',
             borderRadius: 5,
             justifyContent: 'center',
@@ -126,7 +115,11 @@ class LoginScreen extends Component {
           }}
           onPress={this._login}
         >
-          <Text style={{ color: '#fff', fontWeight: 'bold' }}>Login</Text>
+          {this.props.auth.fetching ? (
+            <ActivityIndicator />
+          ) : (
+            <Text style={{ color: '#fff', fontWeight: 'bold' }}>Login</Text>
+          )}
         </TouchableOpacity>
       </View>
     );

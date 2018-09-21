@@ -7,9 +7,8 @@ const keysTypes = {
 };
 
 const keysActionsToDispatch = {
-  fetchKeys: ({ dismissOverlay }) => ({
-    type: keysTypes.FETCH_KEYS,
-    payload: { dismissOverlay }
+  fetchKeys: () => ({
+    type: keysTypes.FETCH_KEYS
   })
 };
 

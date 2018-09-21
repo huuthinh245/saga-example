@@ -31,23 +31,17 @@ const authTypes = {
 };
 
 const authActionsToDispatch = {
-  getToken: ({
-    username,
-    password,
-    dismissOverlay = () => {},
-    onSuccess = () => {},
-    onError = () => {}
-  }) => ({
+  getToken: ({ username, password, onSuccess = () => {}, onError = () => {} }) => ({
     type: authTypes.GET_TOKEN,
     payload: { username, password, onSuccess, onError }
   }),
-  getMe: ({ token, dismissOverlay = () => {}, onSuccess = () => {}, onError = () => {} }) => ({
+  getMe: ({ token, onSuccess = () => {}, onError = () => {} }) => ({
     type: authTypes.GET_ME,
-    payload: { token, dismissOverlay, onSuccess, onError }
+    payload: { token, onSuccess, onError }
   }),
-  logout: ({ dismissOverlay = () => {}, onSuccess = () => {}, onError = () => {} }) => ({
+  logout: ({ onSuccess = () => {}, onError = () => {} }) => ({
     type: authTypes.LOGOUT,
-    payload: { dismissOverlay, onSuccess, onError }
+    payload: { onSuccess, onError }
   })
 };
 
