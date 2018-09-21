@@ -56,7 +56,7 @@ export const goToAuth = ({ loginTitle = 'Login Header' }: Object = {}) =>
             component: {
               name: screens.login,
               options: {
-                topBar: { title: { text: loginTitle } }
+                topBar: { visible: false }
               }
             }
           }
@@ -77,7 +77,7 @@ export const showOverlay = async () =>
     }
   });
 
-export const dismissOverlay = async componentId => Navigation.dismissOverlay(componentId);
+export const dismissOverlay = componentId => Navigation.dismissOverlay(componentId);
 export const pushScreen = async (componentId, layout) => Navigation.push(componentId, layout);
 export const popScreen = async (componentId, mergeOptions) =>
   Navigation.pop(componentId, mergeOptions);

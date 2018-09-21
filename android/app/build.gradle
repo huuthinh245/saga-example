@@ -6,8 +6,6 @@ project.ext.react = [
     entryFile: "index.js"
 ]
 
-apply from: "../../node_modules/react-native/react.gradle"
-
 def enableSeparateBuildPerCPUArchitecture = false
 
 def enableProguardInReleaseBuilds = false
@@ -20,8 +18,8 @@ android {
         applicationId rootProject.ext.applicationId
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode rootProject.ext.versionCode
-        versionName rootProject.ext.versionName
+        versionCode 1
+        versionName '1.0.0'
 
         missingDimensionStrategy "RNN.reactNativeVersion", "reactNative55"
         ndk {
@@ -77,6 +75,7 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-code-push')
     implementation project(':react-native-config')
     implementation project(':react-native-vector-icons')
     implementation project(':react-native-navigation')
@@ -94,3 +93,5 @@ task copyDownloadableDepsToLibs(type: Copy) {
 }
 
 apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
+apply from: "../../node_modules/react-native/react.gradle"
+apply from: "../../node_modules/react-native-code-push/android/codepush.gradle"

@@ -1,5 +1,6 @@
 package com.dfm.projects.PremiumContact;
 
+import com.facebook.react.ReactInstanceManager;
 import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.facebook.react.ReactNativeHost;
@@ -14,12 +15,44 @@ import java.util.Arrays;
 import java.util.List;
 
 public class MainApplication extends NavigationApplication {
+
+    @Override
+    public boolean isDebug() {
+        return BuildConfig.DEBUG;
+    }
+
     @Override
     protected ReactGateway createReactGateway() {
         ReactNativeHost host = new NavigationReactNativeHost(this, isDebug(), createAdditionalReactPackages()) {
+            @javax.annotation.Nullable
+            @Override
+            protected String getJSBundleFile() {
+                return CodePush.getJSBundleFile();
+            }
+
+        };
+        return new ReactGateway(this, isDebug(), host);
+    }
+
+    @Override
+    public List<ReactPackage> createAdditionalReactPackages() {
+        return Arrays.<ReactPackage>asList(
+                new CodePush(getResources().getString(R.string.CoshPush_Staging), getApplicationContext(), isDebug()),
+                new VectorIconsPackage(),
+                new ReactNativeConfigPackage()
+        );
+    }
+}
+/*
+
+public class MainApplication extends NavigationApplication {
+    @Override
+    protected ReactGateway createReactGateway() {
+        ReactNativeHost host = new NavigationReactNativeHost(this, isDebug(), createAdditionalReactPackages()) {
+            @javax.annotation.Nullable
             @Override
             protected String getJSMainModuleName() {
-                return "index";
+                return CodePush.getJSBundleFile();
             }
         };
         return new ReactGateway(this, isDebug(), host);
@@ -33,7 +66,9 @@ public class MainApplication extends NavigationApplication {
     protected List<ReactPackage> getPackages() {
         return Arrays.<ReactPackage>asList(
             new VectorIconsPackage(),
-            new ReactNativeConfigPackage()
+            new ReactNativeConfigPackage(),
+            new CodePush(getResources().getString(R.string.reactNativeCodePush_androidDeploymentKey), getApplicationContext(), isDebug())
+
         );
     }
 
@@ -42,3 +77,4 @@ public class MainApplication extends NavigationApplication {
         return getPackages();
     }
 }
+*/

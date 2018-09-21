@@ -1,11 +1,19 @@
 import React from 'react';
-import { AppState, Text } from 'react-native';
-import { Navigation } from 'react-native-navigation';
-import { registerScreens, screens } from './src/screens';
-import { store } from './src/redux/reducers';
+import { AppState, NetInfo, AsyncStorage } from 'react-native';
 import CodePush from 'react-native-code-push';
+import { Navigation } from 'react-native-navigation';
+
+import { registerScreens, screens } from './src/screens';
+import store from './src/store';
+import { configProps } from './overrideDefaultComponentsProps';
+import { changeConnectionStatus } from './src/actions/connection';
+import AuthModel from './src/models/Auth';
+
+console.disableYellowBox = true;
 
 registerScreens(store);
+
+configProps();
 
 const codePushOptions = {
   checkFrequency: CodePush.CheckFrequency.ON_APP_RESUME,
@@ -16,8 +24,14 @@ const codePushOptions = {
 class App extends React.Component {
   constructor(props) {
     super(props);
+
     this.appState = AppState.currentState;
+
+    this.getSavedState();
+
     AppState.addEventListener('change', this.handleAppStateChange);
+
+    NetInfo.isConnected.addEventListener('connectionChange', this.handleConnectivityChange);
 
     this.startApp();
   }
@@ -28,11 +42,27 @@ class App extends React.Component {
     }
   }
 
+  componentWillUnmount() {
+    NetInfo.isConnected.removeEventListener('connectionChange', this.handleConnectivityChange);
+  }
+
+  getSavedState = async () => {
+    const token = await AsyncStorage.getItem('token');
+
+    if (token) {
+      AuthModel.getInstance().setToken(token[1]);
+    }
+  };
+
   handleAppStateChange = nextAppState => {
     if (this.appState.match(/inactive|background/) && nextAppState === 'active') {
       CodePush.sync(codePushOptions);
     }
     this.appState = AppState.currentState;
+  };
+
+  handleConnectivityChange = isConnected => {
+    store.dispatch(changeConnectionStatus(isConnected));
   };
 
   startApp() {
@@ -52,12 +82,8 @@ class App extends React.Component {
       }
     );
   }
-
-  render() {
-    return null;
-  }
 }
 
-App = CodePush({ checkFrequency: CodePush.CheckFrequency.MANUAL })(App);
+App = CodePush({ checkFrequency: CodePush.CheckFrequency.MANUAL })(new App());
 
 export default App;

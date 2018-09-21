@@ -1,67 +1,37 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Image, ActivityIndicator } from 'react-native';
 import { connect } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
-import Config from 'react-native-config';
 
-import { screens } from './index';
-import { goToAuth, pushScreen } from '../navigation/actions';
+import { keysSelector } from '../reducers/keys';
+import { connectionSelector } from '../reducers/connection';
+import { keysActionsToDispatch } from '../actions/keys';
+import img from '../assets/images/Loading.png';
+import { showOverlay, dismissOverlay } from '../navigation/actions';
 
-class Screen extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      countDown: 3
-    };
-    Navigation.events().bindComponent(this);
+class SplashScreen extends Component {
+  async componentDidMount() {
+    const { isConnected, dispatch, componentId } = this.props;
+    if (isConnected) {
+      showOverlay();
+      const dismiss = () => dismissOverlay(componentId);
+      dispatch(keysActionsToDispatch.fetchKeys({ dismissOverlay: dismiss }));
+    }
   }
-
-  componentDidMount() {
-    console.log(this.props);
-  }
-
-  componentDidAppear = () => {
-    // alert('appear');
-  };
-
-  componentDidDisappear = () => {
-    // alert('did appear');
-  };
 
   render() {
-    const { countDown } = this.state;
-    const text = `Splash screen, it will be disappear after ${countDown}s`;
-    setTimeout(() => {
-      // goToAuth();
-    }, 3000);
-
-    detailLayout = {
-      component: {
-        name: screens.detail,
-        options: {
-          topBar: {
-            title: {
-              text: 'Detail'
-            }
-          }
-        }
-      }
-    };
-    const env = `API_URL=${Config.ENV}`;
     return (
-      <View
-        style={{
-          backgroundColor: 'green',
-          flex: 1,
-          alignItems: 'center',
-          justifyContent: 'center'
-        }}
-      >
-        <Text>{env}</Text>
-        <Text>{text}</Text>
+      <View style={{ flex: 1, alignItems: 'center' }}>
+        <Image source={img} resizeMode="cover" />
+        {this.props.fetchingKeys && (
+          <ActivityIndicator color="blue" style={{ position: 'absolute', bottom: '30%' }} />
+        )}
       </View>
     );
   }
 }
 
-export default connect()(Screen);
+export default connect(state => ({
+  isConnected: connectionSelector(state).isConnected,
+  fetchingKeys: keysSelector(state).fetching
+}))(SplashScreen);
