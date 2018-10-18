@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { Icon, Button } from 'react-native-material-ui';
+import { Icon } from 'react-native-material-ui';
 import { responsiveFont} from 'PremiumContact/overrideDefaultComponentsProps';
 const eventItem = (props) => {
     const { 
