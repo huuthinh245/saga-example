@@ -11,48 +11,19 @@ export const goToHome = ({ titles = [] }: Object = {}) =>
         id: screens.main,
         children: [
           {
-            bottomTabs: {
-              id: screens.tabs,
-              children: [
-                {
-                  component: {
-                    name: screens.tab1,
-                    options: {
-                      bottomTab: {
-                        fontSize: 12,
-                        text: titles[0] || 'tab 1',
-                        icon: alert
-                      },
-                      topBar: {
-                        title: {
-                          text: 'Tab 1'
-                        }
-                      }
-                    }
-                  }
-                },
-                {
-                  component: {
-                    name: screens.tab2,
-                    options: {
-                      bottomTab: {
-                        text: titles[1] || 'tab 2',
-                        fontSize: 12,
-                        icon: auth
-                      },
-                      topBar: {
-                        title: {
-                          text: 'Tab 2'
-                        }
-                      }
-                    }
-                  }
+            component: {
+              id: 'mainpage',
+              name: screens.main,
+              options: {
+                topBar: {
+                  visible: false,
                 }
-              ]
-            }
-          }
-        ]
-      }
+              }
+            },
+
+          },
+        ],
+      },
     }
   });
 
@@ -88,7 +59,10 @@ export const showOverlay = async () =>
   });
 
 export const dismissOverlay = componentId => Navigation.dismissOverlay(componentId);
-export const pushScreen = async (componentId, layout) => Navigation.push(componentId, layout);
+export const pushScreen = (componentId, layout) => {
+  console.log(layout);
+  Navigation.push(componentId, layout);
+};
 export const popScreen = async (componentId, mergeOptions) =>
   Navigation.pop(componentId, mergeOptions);
 export const popToScreen = async (componentId, mergeOptions) =>

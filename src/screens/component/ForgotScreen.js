@@ -3,8 +3,8 @@ import { View, Text, TouchableOpacity } from 'react-native';
 
 import { connect } from 'react-redux';
 
-import { popScreen, popToRoot } from '../navigation/actions';
-import { screens } from './index';
+import { popScreen, popToRoot } from '../../navigation/actions';
+import { screens } from '..';
 
 export default class Screen extends Component {
   render() {

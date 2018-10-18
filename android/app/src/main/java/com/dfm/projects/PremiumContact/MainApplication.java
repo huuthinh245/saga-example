@@ -10,7 +10,7 @@ import com.microsoft.codepush.react.CodePush;
 import com.reactnativenavigation.NavigationApplication;
 import com.reactnativenavigation.react.NavigationReactNativeHost;
 import com.reactnativenavigation.react.ReactGateway;
-
+import com.airbnb.android.react.maps.MapsPackage;
 import java.util.Arrays;
 import java.util.List;
 
@@ -39,7 +39,8 @@ public class MainApplication extends NavigationApplication {
         return Arrays.<ReactPackage>asList(
                 new CodePush(getResources().getString(R.string.CoshPush_Staging), getApplicationContext(), isDebug()),
                 new VectorIconsPackage(),
-                new ReactNativeConfigPackage()
+                new ReactNativeConfigPackage(),
+                new MapsPackage()
         );
     }
 }

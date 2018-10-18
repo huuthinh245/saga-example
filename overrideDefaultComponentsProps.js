@@ -10,7 +10,7 @@ import {
 const DEFAULT_FONT_TEXT = 15;
 const DEFAULT_FONT_INPUT = 17;
 
-const responsiveFont = size => {
+export const responsiveFont = size => {
   if (Platform.OS === 'ios') {
     return Math.round(PixelRatio.roundToNearestPixel(size));
   }
@@ -29,7 +29,8 @@ const customTextInputProps = {
 const customTextProps = {
   style: {
     fontSize: responsiveFont(DEFAULT_FONT_TEXT),
-    color: 'black'
+    color: 'black',
+    fontWeight: '100'
   }
 };
 

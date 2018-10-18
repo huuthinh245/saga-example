@@ -3,44 +3,37 @@ import { View, Text, TouchableOpacity } from 'react-native';
 
 import { connect } from 'react-redux';
 
-import { goToAuth, pushScreen } from '../navigation/actions';
-import { screens } from './index';
-import { Navigation } from 'react-native-navigation';
+import { popScreen, pushScreen } from '../../navigation/actions';
+import { screens } from '..';
 
 export default class Screen extends Component {
-  constructor(props) {
-    super(props);
-    Navigation.events().bindComponent(this);
-  }
-
   render() {
-    detailLayout = {
+    const forgotLayout = {
       component: {
-        name: screens.detail,
+        name: screens.forgot,
         options: {
           topBar: {
             title: {
-              text: 'Detail'
+              text: 'Forgot password'
             }
           }
         }
       }
     };
-
     return (
-      <View style={{ backgroundColor: 'violet', flex: 1 }}>
+      <View style={{ backgroundColor: 'yellow', flex: 1 }}>
         <TouchableOpacity
-          onPress={() => pushScreen(screens.tabs, detailLayout)}
+          onPress={() => pushScreen(this.props.componentId, forgotLayout)}
           style={{ padding: 20, backgroundColor: 'red', margin: 20 }}
         >
-          <Text>Go to detail</Text>
+          <Text>Forgot password</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
-          onPress={() => goToAuth()}
+          onPress={() => popScreen(this.props.componentId)}
           style={{ padding: 20, backgroundColor: 'red', margin: 20 }}
         >
-          <Text>Logout</Text>
+          <Text>Back</Text>
         </TouchableOpacity>
       </View>
     );

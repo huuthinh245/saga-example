@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import { View, Image, ActivityIndicator, Text } from 'react-native';
 import { connect } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
-
-import { keysSelector } from '../reducers/keys';
-import { connectionSelector } from '../reducers/connection';
-import { keysActionsToDispatch } from '../actions/keys';
-import img from '../assets/images/Loading.png';
+import { keysSelector } from '../../reducers/keys';
+import { connectionSelector } from '../../reducers/connection';
+import { keysActionsToDispatch } from '../../actions/keys';
+import img from '../../assets/images/Loading.png';
 
 class SplashScreen extends Component {
   async componentDidMount() {
