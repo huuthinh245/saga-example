@@ -32,6 +32,7 @@ class Header extends React.PureComponent {
                             name={"arrow-back"}
                             size={24}
                             color="#fff"
+                            style={styles.icon}
                         />
                     </TouchableOpacity>
                 }
@@ -58,6 +59,7 @@ const styles = StyleSheet.create({
         marginRight: 24
     },
     icon: {
+        marginLeft: 10
     }
 })
 

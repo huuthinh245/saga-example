@@ -1,42 +1,44 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { Icon, Button } from 'react-native-material-ui';
-import { responsiveFont} from 'PremiumContact/overrideDefaultComponentsProps';
+import { responsiveFont } from 'PremiumContact/overrideDefaultComponentsProps';
 
-const EventTitle = (props) => {
-    return (
-        <View style={styles.wrapper}>
-            <View style={styles.header}>
-                <Icon
-                    name={'shopping-basket'}
-                    size={36}
-                    color="#64abda"
-                />
-                <Text style={styles.headerText}>Production Temps Reel{"\n"}LYON</Text>
-            </View>
-            <View style={styles.date}>
-                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+class EventTitle extends React.PureComponent {
+    render() {
+        return (
+            <View style={styles.wrapper}>
+                <View style={styles.header}>
                     <Icon
-                        name={'alarm'}
-                        size={24}
+                        name={'shopping-basket'}
+                        size={36}
+                        color="#64abda"
                     />
-                    <Text style={styles.contentText}>13 Juin 2018</Text>
+                    <Text style={styles.headerText}>Production Temps Reel{"\n"}LYON</Text>
                 </View>
-                <View style={styles.address} >
-                    <Icon
-                        name={'location-on'}
-                        size={24}
-                    />
-                    <Text style={styles.contentText}>Westotel Nantes Atlantique</Text>
+                <View style={styles.date}>
+                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                        <Icon
+                            name={'alarm'}
+                            size={24}
+                        />
+                        <Text style={styles.contentText}>13 Juin 2018</Text>
+                    </View>
+                    <View style={styles.address} >
+                        <Icon
+                            name={'location-on'}
+                            size={24}
+                        />
+                        <Text style={styles.contentText}>Westotel Nantes Atlantique</Text>
+                    </View>
                 </View>
             </View>
-        </View>
-    );
+        );
+    }
 }
 const styles = StyleSheet.create({
     wrapper: {
         paddingVertical: 10,
-        paddingHorizontal: 10,
+        paddingHorizontal: 15,
     },
     header: {
         flexDirection: 'row',

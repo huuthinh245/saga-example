@@ -16,7 +16,7 @@ registerScreens(store);
 configProps();
 
 const codePushOptions = {
-  checkFrequency: CodePush.CheckFrequency.ON_APP_RESUME,
+  checkFrequency: CodePush.CheckFrequency.ON_APP_START,
   updateDialog: true,
   installMode: CodePush.InstallMode.IMMEDIATE
 };
@@ -55,9 +55,9 @@ class App extends React.Component {
   };
 
   handleAppStateChange = nextAppState => {
-    if (this.appState.match(/inactive|background/) && nextAppState === 'active') {
-      CodePush.sync(codePushOptions);
-    }
+    // if (this.appState.match(/inactive|background/) && nextAppState === 'active') {
+    //   CodePush.sync(codePushOptions);
+    // }
     this.appState = AppState.currentState;
   };
 
