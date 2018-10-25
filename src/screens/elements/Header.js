@@ -6,8 +6,14 @@ const { width } = Dimensions.get('window');
 import PropTypes from 'prop-types';
 
 
+type Props = {
+    onBack?: void,
+    title?: string,
+    hidden: boolean
+   };
+   
 
-class Header extends React.PureComponent {
+class Header extends React.Component<Props> {
     static propTypes = {
         onBack: PropTypes.func,
         title: PropTypes.string,
