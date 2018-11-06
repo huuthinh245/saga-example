@@ -3,5 +3,8 @@ import { keysSaga } from './keys';
 import { authSaga } from './auth';
 
 export default function* rootSaga() {
-  yield [keysSaga(), authSaga()];
+  yield all ([
+    keysSaga(), 
+    authSaga()
+  ]);
 }

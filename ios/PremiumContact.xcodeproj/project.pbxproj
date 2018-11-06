@@ -31,11 +31,12 @@
 		66A3F9EF5BEF4905BDFE296A /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E857050939DA4F4F9779A1DC /* Entypo.ttf */; };
 		70325A267E594A75AFAD3491 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BF088BFB20D84E649D5E7381 /* Foundation.ttf */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
-		89BC174621509A2000EBFB84 /* libReactNativeNavigation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BC1743214FF8A300EBFB84 /* libReactNativeNavigation.a */; };
 		89CEC113DA6840AB96B63F7B /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 950AF3E4C5C84F139DD9D82A /* MaterialCommunityIcons.ttf */; };
 		89E2F05321527EF300DAE167 /* libReactNativeConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 89E2F05221527EE200DAE167 /* libReactNativeConfig.a */; };
 		8DB1B7C1CF914EAE8B5FBBC6 /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3A20441B51D04CA7B06909FF /* Feather.ttf */; };
 		96A2644A561D438FB0D9607A /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0DCE8EE791A8424E9ED3894C /* SimpleLineIcons.ttf */; };
+		97B793652186F64F005A6F1E /* libReactNativeNavigation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BC1743214FF8A300EBFB84 /* libReactNativeNavigation.a */; };
+		97B793A12187015C005A6F1E /* Roboto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 97B793762187013E005A6F1E /* Roboto.ttf */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		B237C83085D14A6E8841A340 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7BF337AB2ECA40C59FF619B3 /* EvilIcons.ttf */; };
 		C34F5E07BE3748548A6DC858 /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D4254F5704254B71BDB1B12A /* libRNVectorIcons.a */; };
@@ -383,6 +384,7 @@
 		89E2F04D21527EE200DAE167 /* ReactNativeConfig.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeConfig.xcodeproj; path = "../node_modules/react-native-config/ios/ReactNativeConfig.xcodeproj"; sourceTree = "<group>"; };
 		8ED4B5CC29BC4DD7AB1B0902 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		950AF3E4C5C84F139DD9D82A /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
+		97B793762187013E005A6F1E /* Roboto.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Roboto.ttf; sourceTree = "<group>"; };
 		9C5128B4AB7B45B5BB5EA4E3 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		AA318D5EB54AB45193F65804 /* Pods-PremiumContact.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PremiumContact.release.xcconfig"; path = "Pods/Target Support Files/Pods-PremiumContact/Pods-PremiumContact.release.xcconfig"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
@@ -407,8 +409,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97B793652186F64F005A6F1E /* libReactNativeNavigation.a in Frameworks */,
 				89E2F05321527EF300DAE167 /* libReactNativeConfig.a in Frameworks */,
-				89BC174621509A2000EBFB84 /* libReactNativeNavigation.a in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
@@ -635,6 +637,7 @@
 		8486DB8039804674A545E0D7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				97B793762187013E005A6F1E /* Roboto.ttf */,
 				E857050939DA4F4F9779A1DC /* Entypo.ttf */,
 				7BF337AB2ECA40C59FF619B3 /* EvilIcons.ttf */,
 				3A20441B51D04CA7B06909FF /* Feather.ttf */,
@@ -1173,6 +1176,7 @@
 				70325A267E594A75AFAD3491 /* Foundation.ttf in Resources */,
 				5496938A662D49B9B8A48E35 /* Ionicons.ttf in Resources */,
 				89CEC113DA6840AB96B63F7B /* MaterialCommunityIcons.ttf in Resources */,
+				97B793A12187015C005A6F1E /* Roboto.ttf in Resources */,
 				10FA039DE86040B79EA01B3F /* MaterialIcons.ttf in Resources */,
 				3DF5F05C07B64637879BB37C /* Octicons.ttf in Resources */,
 				96A2644A561D438FB0D9607A /* SimpleLineIcons.ttf in Resources */,
@@ -1195,7 +1199,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=/Users/dfm-engineering/.nvm/versions/node/v8.11.3/bin/node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
 		77CDA5D7360931540B255DA1 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;

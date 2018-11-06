@@ -16,8 +16,8 @@ const eventItem = (props) => {
                 />
                 <Text style={styles.headerText}>Production Temps Reel{"\n"}LYON</Text>
             </View>
-            <View style={styles.date}>
-                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <View style={styles.wrapperContact}>
+                <View style={styles.date}>
                     <Icon
                         name={'alarm'}
                         size={24}
@@ -29,7 +29,7 @@ const eventItem = (props) => {
                         name={'location-on'}
                         size={24}
                     />
-                    <Text style={styles.contentText}>Westotel Nantes Atlantique</Text>
+                    <Text style={styles.contentText} numberOfLines={1}>Westotel Nantes Atlantiqued23d32d32d23d23d23 </Text>
                 </View>
             </View>
             <View style={styles.footer}>
@@ -57,19 +57,25 @@ const styles = StyleSheet.create({
     headerText: {
         fontSize: responsiveFont(17),
     },
-    date: {
+    wrapperContact: {
         flexDirection: 'row',
         marginVertical: 20,
-        marginLeft: 30
     },
     address: {
         flexDirection: 'row',
         alignItems: 'center',
-        marginLeft: 25
+        justifyContent: 'center',
+        flex: 1
+    },
+    date: {
+        flexDirection: 'row', 
+        alignItems: 'center',
+        justifyContent: 'center',
+        flex: 1
     },
     contentText: {
         fontSize: responsiveFont(16),
-        color: '#c0c0c0'
+        color: '#c0c0c0',
     },
     footer: {
         flexDirection: 'row',

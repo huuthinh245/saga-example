@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, FlatList } from 'react-native';
+import { View, Text, FlatList, SafeAreaView } from 'react-native';
 import { connect } from 'react-redux';
 import { popScreen, pushScreen } from '../../navigation/actions';
 import { screens } from '..';
@@ -15,7 +15,9 @@ export default class ProgramEvent extends Component {
         const abc = ['a', 'b', 'c']
         return (
             <View style={{ flex: 1 }}>
-                <Header title="programme" hidden={false} onBack={this._back} />
+                <SafeAreaView>
+                    <Header title="programme" hidden={false} onBack={this._back} />
+                </SafeAreaView>
                 <EventTitle />
                 <FlatList
                     data={abc}

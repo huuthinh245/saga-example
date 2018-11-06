@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, AsyncStorage, Alert, FlatList } from 'react-native';
+import { View, Text, TouchableOpacity, AsyncStorage, Alert, FlatList, SafeAreaView } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { connect } from 'react-redux';
 import { Toolbar } from 'react-native-material-ui';
@@ -54,42 +54,44 @@ class EventScreen extends Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <Toolbar
-          centerElement="Evénements"
-          hidden={true}
-          showIconSearch
-          searchable={{
-            autoFocus: true,
-            placeholder: 'Search',
-            onSearchPressed: () => {
-              this.setState({ align: 'auto' });
-            },
-            onSearchCloseRequested: () => {
-              this.setState({ align: 'center' });
-            },
-            onChangeText: (text) => {
-              console.log(text)
-            }
-          }}
-          isSearchActive={this.state.isSearch}
-          style={{
-            container: {
-              backgroundColor: '#ad121c',
-            },
-            titleText: {
-              textAlign: this.state.align,
-              fontWeight: '100',
-              fontSize: responsiveFont(18)
-            },
-            centerElementContainer: {
-              marginLeft: 0,
-              marginRight: 24
-            },
-            leftElementContainer: {
-              margin: 0
-            }
-          }}
-        />
+        <SafeAreaView>
+          <Toolbar
+            centerElement="Evénements"
+            hidden={true}
+            showIconSearch
+            searchable={{
+              autoFocus: true,
+              placeholder: 'Search',
+              onSearchPressed: () => {
+                this.setState({ align: 'auto' });
+              },
+              onSearchCloseRequested: () => {
+                this.setState({ align: 'center' });
+              },
+              onChangeText: (text) => {
+                console.log(text)
+              }
+            }}
+            isSearchActive={this.state.isSearch}
+            style={{
+              container: {
+                backgroundColor: '#ad121c',
+              },
+              titleText: {
+                textAlign: this.state.align,
+                fontWeight: '100',
+                fontSize: responsiveFont(18)
+              },
+              centerElementContainer: {
+                marginLeft: 0,
+                marginRight: 24
+              },
+              leftElementContainer: {
+                margin: 0
+              }
+            }}
+          />
+        </SafeAreaView>
         <EventItem
           goToDetail={this._pushDetailEvent}
         />

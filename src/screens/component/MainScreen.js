@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, Animated, TouchableOpacity, StyleSheet, Text } from 'react-native';
+import { View, Animated, TouchableOpacity, StyleSheet, SafeAreaView } from 'react-native';
 import { TabView } from 'react-native-tab-view';
 import { Navigation } from 'react-native-navigation';
 import { connect } from 'react-redux';
@@ -10,27 +10,27 @@ import EventScreen from './EventScreen';
 
 
 class MainScreen extends React.Component {
-    constructor(props) {
-        super(props);
-        Navigation.events().bindComponent(this);
-        this.state = {
-            index: 0,
-            routes: [
-              { key: 'event', title: 'Event' },
-              { key: 'contact', title: 'Contact' },
-            ],
-        };
-    }
+  constructor(props) {
+    super(props);
+    Navigation.events().bindComponent(this);
+    this.state = {
+      index: 0,
+      routes: [
+        { key: 'event', title: 'Event' },
+        { key: 'contact', title: 'Contact' },
+      ],
+    };
+  }
 
-  _handleIndexChange = index =>  {
+  _handleIndexChange = index => {
     this.setState({ index });
   };
-  
+
   _renderTabBar = props => {
     const lengthRoute = props.navigationState.routes.length;
     const inputRange = props.navigationState.routes.map((x, i) => i);
     return (
-      <View style={styles.tabBar}>
+      <SafeAreaView style={styles.tabBar}>
         {props.navigationState.routes.map((route, i) => {
           const color = props.position.interpolate({
             inputRange,
@@ -40,16 +40,16 @@ class MainScreen extends React.Component {
           });
           return (
             <View style={styles.tabItem} key={i}>
-            <TouchableOpacity
-              style={[styles.tabItem]}
-              onPress={() => this._handleIndexChange(i)}>
-              <Animated.Text style={{ color, flex: 1, textAlign: 'center' }}>{route.title}</Animated.Text>
-            </TouchableOpacity>
-            {i < lengthRoute - 1 && <View style={[styles.rightBorder]}/>}
+              <TouchableOpacity
+                style={[styles.tabItem]}
+                onPress={() => this._handleIndexChange(i)}>
+                <Animated.Text style={{ color, flex: 1, textAlign: 'center' }}>{route.title}</Animated.Text>
+              </TouchableOpacity>
+              {i < lengthRoute - 1 && <View style={[styles.rightBorder]} />}
             </View>
           );
         })}
-      </View>
+      </SafeAreaView>
     );
   };
 
@@ -58,7 +58,7 @@ class MainScreen extends React.Component {
       case 'event':
         return <EventScreen {...this.props} />;
       case 'contact':
-        return <ContactScreen {...this.props}/>;
+        return <ContactScreen {...this.props} />;
       default:
         return null;
     }

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, Animated, TouchableOpacity, StyleSheet, Text } from 'react-native';
+import { View, Animated, TouchableOpacity, StyleSheet, Text, SafeAreaView } from 'react-native';
 import { TabView } from 'react-native-tab-view';
 import { Navigation } from 'react-native-navigation';
 import { connect } from 'react-redux';
@@ -31,7 +31,7 @@ class DetailEvent extends React.Component {
     const lengthRoute = props.navigationState.routes.length;
     const inputRange = props.navigationState.routes.map((x, i) => i);
     return (
-      <View style={styles.tabBar}>
+      <SafeAreaView style={styles.tabBar}>
         {props.navigationState.routes.map((route, i) => {
           const color = props.position.interpolate({
             inputRange,
@@ -50,7 +50,7 @@ class DetailEvent extends React.Component {
             </View>
           );
         })}
-      </View>
+      </SafeAreaView>
     );
   };
 

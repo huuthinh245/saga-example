@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, SafeAreaView } from 'react-native';
 import { connect } from 'react-redux';
 import { popScreen, pushScreen } from '../../navigation/actions';
 import { screens } from '..';
@@ -10,7 +10,9 @@ export default class CatalogEvent extends Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <Header title="catalog" hidden={false} />
+        <SafeAreaView>
+          <Header title="catalog" hidden={false} />
+        </SafeAreaView>
         <EventTitle />
       </View>
     );

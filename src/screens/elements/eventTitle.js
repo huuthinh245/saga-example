@@ -15,22 +15,22 @@ class EventTitle extends React.PureComponent {
                     />
                     <Text style={styles.headerText}>Production Temps Reel{"\n"}LYON</Text>
                 </View>
+                <View style={styles.wrapperContact}>
                 <View style={styles.date}>
-                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                        <Icon
-                            name={'alarm'}
-                            size={24}
-                        />
-                        <Text style={styles.contentText}>13 Juin 2018</Text>
-                    </View>
-                    <View style={styles.address} >
-                        <Icon
-                            name={'location-on'}
-                            size={24}
-                        />
-                        <Text style={styles.contentText}>Westotel Nantes Atlantique</Text>
-                    </View>
+                    <Icon
+                        name={'alarm'}
+                        size={24}
+                    />
+                    <Text style={styles.contentText}>13 Juin 2018</Text>
                 </View>
+                <View style={styles.address} >
+                    <Icon
+                        name={'location-on'}
+                        size={24}
+                    />
+                    <Text style={styles.contentText} numberOfLines={1}>Westotel Nantes Atlantiqued23d32d32d23d23d23 </Text>
+                </View>
+            </View>
             </View>
         );
     }
@@ -47,15 +47,21 @@ const styles = StyleSheet.create({
         fontSize: responsiveFont(17),
         marginLeft: 5
     },
-    date: {
+    wrapperContact: {
         flexDirection: 'row',
         marginVertical: 20,
-        marginLeft: 35
+    },
+    date: {
+        flexDirection: 'row', 
+        alignItems: 'center',
+        justifyContent: 'center',
+        flex: 1
     },
     address: {
         flexDirection: 'row',
         alignItems: 'center',
-        marginLeft: 25
+        justifyContent: 'center',
+        flex: 1
     },
     contentText: {
         fontSize: responsiveFont(16),

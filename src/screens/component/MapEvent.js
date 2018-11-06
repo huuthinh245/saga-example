@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, TouchableOpacity, Dimensions, StyleSheet } from 'react-native';
+import { View, TouchableOpacity, Dimensions, StyleSheet, SafeAreaView } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { connect } from 'react-redux';
 import MapView, { Marker } from 'react-native-maps';
@@ -23,7 +23,9 @@ export default class MapEvent extends Component {
     render() {
         return (
             <View style={{ flex: 1 }}>
-                <Header title="Map" hidden={false} onBack={this._back} />
+                <SafeAreaView>
+                    <Header title="Map" hidden={false} onBack={this._back} />
+                </SafeAreaView>
                 <EventTitle />
                 <View style={styles.wrapperMap}>
                     <MapView

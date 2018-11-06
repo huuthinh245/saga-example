@@ -1,16 +1,16 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Dimensions, Image } from 'react-native';
-import { responsiveFont} from 'PremiumContact/overrideDefaultComponentsProps';
+import { responsiveFont } from 'PremiumContact/overrideDefaultComponentsProps';
 const { width } = Dimensions.get('window');
 
 const profile = (props) => {
     return (
         <View style={styles.wrapper}>
-            <Image style={styles.cover} source={require('../../assets/images/cover_photo.jpg')}/>
-            <Image style={styles.avatar} source={require('../../assets/images/cover_photo.jpg')}/>
+            <Image style={styles.cover} source={require('../../assets/images/cover_photo.jpg')} />
+            <Image style={styles.avatar} source={require('../../assets/images/cover_photo.jpg')} />
             <View style={styles.wrapperInfo}>
                 <Text style={styles.name}>Federic Plourde</Text>
-                <View style={styles.devine}/>
+                <View style={styles.devine} />
                 <Text style={styles.info}>abc@gmail.com</Text>
                 <Text style={[styles.info, { marginTop: 10 }]}>321321321312</Text>
             </View>
@@ -45,8 +45,8 @@ const styles = StyleSheet.create({
         borderColor: '#eff0f3',
         borderRadius: 10,
         backgroundColor: '#ffffff',
-        shadowOffset: { width: 10, height: 10, },
-        shadowColor: '#eff0f3',
+        shadowOffset: { width: 5, height: 5, },
+        shadowColor: 'black',
         elevation: 2,
         shadowRadius: 10,
         shadowOpacity: 0.2,
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     },
     info: {
         fontSize: responsiveFont(20),
-        color: 'silver' 
+        color: 'silver'
     },
     devine: {
         width: '100%',

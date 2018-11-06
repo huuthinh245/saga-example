@@ -56,7 +56,16 @@ function* getToken({ payload }) {
     yield put({ type: 'ERROR' });
   }
 }
+export function* watchLogin() {
+  yield takeLatest(authTypes.GET_TOKEN, getToken);
+}
 
+export function* watchLGetMe() {
+  yield takeLatest(authTypes.GET_ME, getMe);
+}
 export function* authSaga() {
-  yield all([takeLatest(authTypes.GET_TOKEN, getToken), takeLatest(authTypes.GET_ME, getMe)]);
+  yield all([
+    fork(watchLogin),
+    fork(watchLGetMe)
+  ]);
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Dimensions, Image } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Dimensions, Image, } from 'react-native';
 import { Icon } from 'react-native-material-ui';
 import { responsiveFont } from 'PremiumContact/overrideDefaultComponentsProps';
 const { width } = Dimensions.get('window');
