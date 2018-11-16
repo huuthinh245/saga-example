@@ -33,12 +33,12 @@ class Header extends React.Component<Props> {
                     !hidden &&
                     <TouchableOpacity
                         onPress={onBack}
+                        style={styles.icon}
                     >
                         <Icon
                             name={"arrow-back"}
                             size={24}
                             color="#fff"
-                            style={styles.icon}
                         />
                     </TouchableOpacity>
                 }

@@ -11,6 +11,7 @@ export default class ProgramEvent extends Component {
     _back = () => {
         popScreen(this.props.componentId);
     }
+    _keyExtractor = (item, index) => index.toString();
     render() {
         const abc = ['a', 'b', 'c']
         return (
@@ -21,8 +22,8 @@ export default class ProgramEvent extends Component {
                 <EventTitle />
                 <FlatList
                     data={abc}
-                    renderItem={({ item }) => <ProgramItem/>}
-                
+                    keyExtractor={this._keyExtractor}
+                    renderItem={({ item }) => <ProgramItem/>}     
                 />
             </View>
         );
