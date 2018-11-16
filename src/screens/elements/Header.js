@@ -43,6 +43,7 @@ class Header extends React.Component<Props> {
                     </TouchableOpacity>
                 }
                 <Text style={styles.title} onPress={onBack}>{title.toUpperCase()}</Text>
+                
             </View>
         );
     }
