@@ -57,7 +57,7 @@ class EventScreen extends Component {
         <SafeAreaView>
           <Toolbar
             centerElement="Evénements"
-            hidden={true}
+            hidden
             showIconSearch
             searchable={{
               autoFocus: true,

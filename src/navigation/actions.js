@@ -59,10 +59,7 @@ export const showOverlay = async () =>
   });
 
 export const dismissOverlay = componentId => Navigation.dismissOverlay(componentId);
-export const pushScreen = (componentId, layout) => {
-  console.log(layout);
-  Navigation.push(componentId, layout);
-};
+export const pushScreen = (componentId, layout) => Navigation.push(componentId, layout);
 export const popScreen = async (componentId, mergeOptions) =>
   Navigation.pop(componentId, mergeOptions);
 export const popToScreen = async (componentId, mergeOptions) =>

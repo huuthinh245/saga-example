@@ -41,7 +41,7 @@ export default class ContactScreen extends Component {
     return (
       <View style={{ flex: 1 }}>
         <SafeAreaView>
-          <Header title="contact" />
+          <Header title="contact"  />
         </SafeAreaView>
         <Profile />
       </View>

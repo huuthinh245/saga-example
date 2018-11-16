@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginVertical: 20,
     // marginRight: 20
-
+    
   },
   imageBackground: {
     backgroundColor: 'red',
