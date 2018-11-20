@@ -7,6 +7,7 @@ import { popScreen, pushScreen } from '../../navigation/actions';
 import { screens } from '..';
 import Header from '../elements/Header';
 import EventTitle from '../elements/eventTitle';
+
 const { width, height } = Dimensions.get('window');
 const ASPECT_RATIO = width / height;
 
@@ -15,45 +16,40 @@ const LONGITUDE = 106.626068;
 const LATITUDE_DELTA = 0.0922;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
-
 export default class MapEvent extends Component {
-
   showCallout = () => {
     this.myMarker.showCallout();
-  }
+  };
 
   _back = () => {
     popScreen(this.props.componentId);
-  }
+  };
   _reCenter = () => {
     this._map.animateToCoordinate({
       latitude: 10.813611,
       longitude: 106.662623
     });
-  }
+  };
 
-  handleIndoorFocus = (event) => {
+  handleIndoorFocus = event => {
     alert(event);
     const { indoorBuilding } = event.nativeEvent;
     const { defaultLevelIndex, levels } = indoorBuilding;
     const levelNames = levels.map(lv => lv.name || '');
     const msg = `Default Level: ${defaultLevelIndex}\nLevels: ${levelNames.toString()}`;
-    Alert.alert(
-      'Indoor building focused',
-      msg
-    );
-  }
+    Alert.alert('Indoor building focused', msg);
+  };
 
   setIndoorLevel = () => {
     this._map.setIndoorActiveLevelIndex(5);
-  }
+  };
   render() {
+    console.log(this.props);
     return (
       <View style={{ flex: 1 }}>
-        <SafeAreaView>
+        <SafeAreaView style={styles.header}>
           <Header title="Map" hidden={false} onBack={this._back} />
         </SafeAreaView>
-        <EventTitle />
         <View style={styles.wrapperMap}>
           <MapView
             provider={PROVIDER_GOOGLE}
@@ -67,7 +63,9 @@ export default class MapEvent extends Component {
             maxZoomLevel={100}
             zoomControlEnabled
             onRegionChangeComplete={this.showCallout}
-            ref={_map => { this._map = _map; }}
+            ref={_map => {
+              this._map = _map;
+            }}
             showsIndoorLevelPicker
             showsIndoors
             showsBuildings
@@ -79,23 +77,19 @@ export default class MapEvent extends Component {
                 latitude: 10.813611,
                 longitude: 106.662623
               }}
-              ref={myMarker => { this.myMarker = myMarker; }}
+              ref={myMarker => {
+                this.myMarker = myMarker;
+              }}
             >
               <MapView.Callout>
                 <Text>BiG BiG Callout</Text>
               </MapView.Callout>
             </MapView.Marker>
           </MapView>
-          <TouchableOpacity
-            style={styles.buttonFilter}
-            onPress={this.setIndoorLevel}
-          >
+          <TouchableOpacity style={styles.buttonFilter} onPress={this.setIndoorLevel}>
             <MaterialCommunityIcons name="tune" size={26} color="#000" style={styles.icon} />
           </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.buttonCenter}
-            onPress={this._reCenter}
-          >
+          <TouchableOpacity style={styles.buttonCenter} onPress={this._reCenter}>
             <MaterialCommunityIcons name="target" size={26} color="#000" style={styles.icon} />
           </TouchableOpacity>
         </View>
@@ -107,16 +101,19 @@ export default class MapEvent extends Component {
 const styles = StyleSheet.create({
   wrapperMap: {
     flex: 1,
-    justifyContent: 'flex-start',
-    margin: 20,
+    justifyContent: 'flex-start'
+    // margin: 20
   },
   map: {
     ...StyleSheet.absoluteFillObject
   },
+  header: {
+    backgroundColor: '#ad121c'
+  },
   buttonFilter: {
     borderRadius: 12,
     backgroundColor: '#fff',
-    shadowOffset: { width: 10, height: 10, },
+    shadowOffset: { width: 10, height: 10 },
     shadowColor: '#eff0f3',
     elevation: 1,
     shadowRadius: 12,
@@ -128,7 +125,7 @@ const styles = StyleSheet.create({
   buttonCenter: {
     borderRadius: 12,
     backgroundColor: '#fff',
-    shadowOffset: { width: 10, height: 10, },
+    shadowOffset: { width: 10, height: 10 },
     shadowColor: '#eff0f3',
     elevation: 1,
     shadowRadius: 12,

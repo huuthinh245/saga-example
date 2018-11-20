@@ -1,41 +1,36 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Image, Dimensions } from 'react-native';
 import { Icon } from 'react-native-material-ui';
-import { responsiveFont } from 'PremiumContact/overrideDefaultComponentsProps'; // disble-eslint
+import { responsiveFont } from 'PremiumContact/overrideDefaultComponentsProps'; // decibel-eslint
 import ImageEv from '../../assets/images/cover_photo.jpg';
 
 const { height, width } = Dimensions.get('window');
-const eventItem = (props) => {
-  const {
-    goToDetail
-  } = props;
+const eventItem = props => {
+  const { goToDetail } = props;
+  // const { onBack } = this.props;
   return (
     <View style={styles.wrapper}>
       <TouchableOpacity onPress={goToDetail} style={styles.imageBackground}>
         <Image style={styles.image} source={ImageEv} />
       </TouchableOpacity>
       <View style={styles.header}>
-        <Icon
-          name="shopping-basket"
-          size={36}
-          color="#64abda"
-        />
-        <Text style={styles.headerText}>Production Temps Reel{'\n'}LYON</Text>
+        <Icon name="shopping-basket" size={36} color="#64abda" />
+        <Text style={styles.headerText}>
+          Production Temps Reel
+          {'\n'}
+          LYON
+        </Text>
       </View>
       <View style={styles.wrapperContact}>
         <View style={styles.date}>
-          <Icon
-            name="alarm"
-            size={24}
-          />
+          <Icon name="alarm" size={24} />
           <Text style={styles.contentText}>13 Juin 2018</Text>
         </View>
-        <View style={styles.address} >
-          <Icon
-            name="location-on"
-            size={24}
-          />
-          <Text style={styles.contentText} numberOfLines={1}>Westotel Nantes Atlantiqued23d32d32d23d23d23 </Text>
+        <View style={styles.address}>
+          <Icon name="location-on" size={24} />
+          <Text style={styles.contentText} numberOfLines={1}>
+            Westotel Nantes Atlantiqued23d32d32d23d23d23{' '}
+          </Text>
         </View>
       </View>
       {/* <View style={styles.footer}>
@@ -61,18 +56,18 @@ const styles = StyleSheet.create({
     flexDirection: 'row'
   },
   headerText: {
-    fontSize: responsiveFont(17),
+    fontSize: responsiveFont(17)
   },
   wrapperContact: {
     flexDirection: 'row',
-    marginVertical: 20,
+    marginVertical: 20
   },
   imageBackground: {
     backgroundColor: 'red',
     justifyContent: 'center',
     alignItems: 'center',
     height: height * 0.3,
-    width: width - 20,
+    width: width - 20
   },
   image: {
     height: height * 0.3,
@@ -93,7 +88,7 @@ const styles = StyleSheet.create({
   },
   contentText: {
     fontSize: responsiveFont(16),
-    color: '#c0c0c0',
+    color: '#c0c0c0'
   },
   footer: {
     flexDirection: 'row',
@@ -103,7 +98,7 @@ const styles = StyleSheet.create({
   footerText: {
     fontSize: responsiveFont(20),
     fontWeight: '100',
-    flex: 0.75,
+    flex: 0.75
   },
   button: {
     backgroundColor: '#ad121c',

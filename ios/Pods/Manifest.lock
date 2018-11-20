@@ -37,11 +37,11 @@ PODS:
     - Base64 (~> 1.1.2)
   - React (0.55.4):
     - React/Core (= 0.55.4)
-  - react-native-google-maps (0.21.0):
+  - react-native-google-maps (0.22.0):
     - Google-Maps-iOS-Utils (= 2.1.0)
     - GoogleMaps (= 2.5.0)
     - React
-  - react-native-maps (0.21.0):
+  - react-native-maps (0.22.0):
     - React
   - React/Core (0.55.4):
     - yoga (= 0.55.4.React)
@@ -153,7 +153,7 @@ SPEC CHECKSUMS:
   GoogleMaps: c087b8e5dfe87ca6ebf59adb9b4894a4146bec4f
   JWT: 05028b9624591bba9681bb57df2c5f95fa258bad
   React: aa2040dbb6f317b95314968021bd2888816e03d5
-  react-native-google-maps: 2cfe3b01f8422c7dae51d8764139fd70f888cfce
+  react-native-google-maps: b946d62e25dc66097921ed82520e45b0b081768a
   react-native-maps: 066c2afcc89e18726377bcc685315f989ca22449
   SSZipArchive: 41455d4b8d2b6ab93990820b50dc697c2554a322
   yoga: a23273df0088bf7f2bb7e5d7b00044ea57a2a54a

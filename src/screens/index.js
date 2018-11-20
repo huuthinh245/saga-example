@@ -8,6 +8,9 @@ import RegisterScreen from './component/RegisterScreen';
 import ForgotScreen from './component/ForgotScreen';
 import MainScreen from './component/MainScreen';
 import DetailEvent from './component/DetailEvent';
+import MapEvent from './component/MapEvent';
+import CatalogEvent from './component/CatalogEvent';
+import ProgramEvent from './component/ProgramEvent';
 
 export const screens = {
   main: 'premiumContact.main',
@@ -18,6 +21,9 @@ export const screens = {
   register: 'premiumContact.register',
   forgot: 'premiumContact.forgot',
   detail: 'premiumContact.detailEvent',
+  map: 'premiumContact.mapEvent',
+  program: 'premiumContact.program',
+  catalog: 'premiumContact.catalog'
 };
 
 export const registerScreens = store => {
@@ -28,4 +34,7 @@ export const registerScreens = store => {
   Navigation.registerComponentWithRedux(screens.register, () => RegisterScreen, Provider, store);
   Navigation.registerComponentWithRedux(screens.forgot, () => ForgotScreen, Provider, store);
   Navigation.registerComponentWithRedux(screens.detail, () => DetailEvent, Provider, store);
+  Navigation.registerComponentWithRedux(screens.map, () => MapEvent, Provider, store);
+  Navigation.registerComponentWithRedux(screens.catalog, () => CatalogEvent, Provider, store);
+  Navigation.registerComponentWithRedux(screens.program, () => ProgramEvent, Provider, store);
 };

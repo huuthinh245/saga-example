@@ -7,7 +7,7 @@ import { goToAuth, pushScreen } from '../../navigation/actions';
 import { screens } from '..';
 import { Navigation } from 'react-native-navigation';
 import Profile from '../elements/profile';
-import  Header  from '../elements/Header';
+import Header from '../elements/Header';
 
 export default class ContactScreen extends Component {
   constructor(props) {
@@ -23,7 +23,7 @@ export default class ContactScreen extends Component {
           }
         }
       }
-    })
+    });
   }
   render() {
     detailLayout = {
@@ -40,8 +40,8 @@ export default class ContactScreen extends Component {
     };
     return (
       <View style={{ flex: 1 }}>
-        <SafeAreaView>
-          <Header title="contact"  />
+        <SafeAreaView style={{ backgroundColor: '#ad121c' }}>
+          <Header title="contact" />
         </SafeAreaView>
         <Profile />
       </View>
@@ -49,6 +49,4 @@ export default class ContactScreen extends Component {
   }
 }
 
-const styles = StyleSheet.create({
- 
-})
+const styles = StyleSheet.create({});
