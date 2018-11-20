@@ -1,20 +1,29 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, AsyncStorage, Alert, FlatList, SafeAreaView } from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  AsyncStorage,
+  Alert,
+  FlatList,
+  SafeAreaView
+} from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { connect } from 'react-redux';
 import { Toolbar } from 'react-native-material-ui';
 import { goToAuth, pushScreen, showOverlay } from '../../navigation/actions';
 import { screens } from '..';
 import { connectionSelector } from '../../reducers/connection';
-import EventItem from "../elements/eventItem";
-import { responsiveFont} from 'PremiumContact/overrideDefaultComponentsProps';
+import EventItem from '../elements/eventItem';
+import MapEvent from '../component/MapEvent';
+import { responsiveFont } from 'PremiumContact/overrideDefaultComponentsProps';
 
 class EventScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
       align: 'center'
-    }
+    };
     // Navigation.events().bindComponent(this);
   }
 
@@ -40,21 +49,21 @@ class EventScreen extends Component {
         name: screens.detail,
         options: {
           topBar: {
-            visible: false,
-            title: {
-              text: 'aaaaa'
-            }
+            visible: false
           }
         }
       }
     };
-    pushScreen(this.props.componentId, detailLayout)
-  }
+    pushScreen(this.props.componentId, detailLayout);
+  };
+  _onBack = () => {
+    Navigation.pop(this.props.componentId);
+  };
 
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <SafeAreaView>
+        <SafeAreaView style={{ backgroundColor: '#ad121c' }}>
           <Toolbar
             centerElement="Evénements"
             hidden
@@ -68,14 +77,14 @@ class EventScreen extends Component {
               onSearchCloseRequested: () => {
                 this.setState({ align: 'center' });
               },
-              onChangeText: (text) => {
-                console.log(text)
+              onChangeText: text => {
+                console.log(text);
               }
             }}
             isSearchActive={this.state.isSearch}
             style={{
               container: {
-                backgroundColor: '#ad121c',
+                backgroundColor: '#ad121c'
               },
               titleText: {
                 textAlign: this.state.align,
@@ -92,19 +101,15 @@ class EventScreen extends Component {
             }}
           />
         </SafeAreaView>
-        <EventItem
-          goToDetail={this._pushDetailEvent}
-        />
-
+        <EventItem goToDetail={this._pushDetailEvent} />
       </View>
     );
   }
 }
 
-const mapStateToProps = (state) => {
-
+const mapStateToProps = state => {
   return {
-    isConnected: connectionSelector(state).isConnected,
-  }
-}
+    isConnected: connectionSelector(state).isConnected
+  };
+};
 export default connect(mapStateToProps)(EventScreen);

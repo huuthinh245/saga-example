@@ -10,13 +10,13 @@ import ProgramItem from '../elements/programItem';
 export default class ProgramEvent extends Component {
   _back = () => {
     popScreen(this.props.componentId);
-  }
+  };
   _keyExtractor = (item, index) => index.toString();
   render() {
     const abc = ['a', 'b', 'c'];
     return (
       <View style={{ flex: 1 }}>
-        <SafeAreaView>
+        <SafeAreaView style={{ backgroundColor: '#ad121c' }}>
           <Header title="programme" hidden={false} onBack={this._back} />
         </SafeAreaView>
         <EventTitle />

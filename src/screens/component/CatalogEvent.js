@@ -7,11 +7,14 @@ import Header from '../elements/Header';
 import EventTitle from '../elements/eventTitle';
 
 export default class CatalogEvent extends Component {
+  _back = () => {
+    popScreen(this.props.componentId);
+  };
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <SafeAreaView>
-          <Header title="catalog" hidden={false} />
+        <SafeAreaView style={{ backgroundColor: '#ad121c' }}>
+          <Header title="catalog" hidden={false} onBack={this._back} />
         </SafeAreaView>
         <EventTitle />
       </View>
