@@ -35,9 +35,9 @@ const authActionsToDispatch = {
     type: authTypes.GET_TOKEN,
     payload: { username, password, onSuccess, onError }
   }),
-  getMe: ({ token, onSuccess = () => {}, onError = () => {} }) => ({
+  getMe: (token) => ({
     type: authTypes.GET_ME,
-    payload: { token, onSuccess, onError }
+    payload: { token }
   }),
   logout: ({ onSuccess = () => {}, onError = () => {} }) => ({
     type: authTypes.LOGOUT,
@@ -47,19 +47,24 @@ const authActionsToDispatch = {
 
 const authAPI = {
   getToken: ({ username, password }) => {
-    const form = new FormData();
-    form.append('username', username);
-    form.append('password', password);
-
+    const form = JSON.stringify({
+      UserName: username,
+      Password: password
+    });
     const config = {
-      headers: { 'Content-Type': 'multipart/form-data' },
+      headers: { 'Content-Type': 'application/json' },
       onUploadProgress: progressEvent => {
         const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
       }
     };
-    return api.post('auth/token', form, config);
+    return api.post('login/createtoken', form, config);
   },
-  getMe: ({ token }) => api.get(`user/me?access_token=${token}`)
+  getMe: ({ token }) => {
+    const config = {
+      headers: { strToken: token },
+    };
+    return api.post('login', null, config);
+  }
 };
 
 export { authTypes, authActionsToDispatch, authAPI };

@@ -8,16 +8,15 @@ import AuthModel from '../models/Auth';
 
 function* getMe({ payload }) {
   const { token } = payload;
+  console.log(token);
   try {
     const resp = yield call(authAPI.getMe.bind(null, { token }));
-
+    const { data } = resp;
+    console.log(resp);
     // timeout or not responding ...
-    if (!resp.status) {
-      _alert(alertTitles.error, resp.problem);
-    }
-    if (resp.status === 200) {
-      AuthModel.setId(resp.data.data.id);
-      yield put({ type: authTypes.GET_ME_SUCCESS, payload: resp.data.data });
+    if (parseInt(data.errorCode, 0) === 200) {
+      AuthModel.setId(data.result.idSocieteUtilisateur);
+      yield put({ type: authTypes.GET_ME_SUCCESS, payload: data.result });
       goToHome();
     } else {
       _alert(alertTitles.error, resp.data.message);
@@ -36,13 +35,11 @@ function* getToken({ payload }) {
   try {
     const { username, password } = payload;
     const resp = yield call(authAPI.getToken.bind(null, { username, password }));
-
+    const { data } = resp;
     // timeout or not responding ...
-    if (!resp.status) {
-      _alert(alertTitles.error, resp.problem);
-    }
-    if (resp.status === 200) {
-      const token = resp.data.data.access_token;
+    if (parseInt(data.errorCode, 0) === 200) {
+      const { token } = data;
+      console.log(token);
       AuthModel.setToken(token);
       AsyncStorage.setItem('token', token);
       yield put({ type: authTypes.GET_TOKEN_SUCCESS });

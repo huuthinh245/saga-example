@@ -10,12 +10,8 @@ import {
   StyleSheet
 } from 'react-native';
 import { connect } from 'react-redux';
-import { Navigation } from 'react-native-navigation';
-
-import { keysSelector } from '../../reducers/keys';
 import { connectionSelector } from '../../reducers/connection';
 import { authSelector } from '../../reducers/auth';
-import { keysActionsToDispatch } from '../../actions/keys';
 import { showOverlay, dismissOverlay } from '../../navigation/actions';
 import Auth from '../../models/Auth';
 import { authActionsToDispatch } from '../../actions/auth';
@@ -26,8 +22,8 @@ class LoginScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: 'dung@gmail.com',
-      password: '123123'
+      username: 'matrizzull',
+      password: 'un9qbvs$'
     };
   }
 

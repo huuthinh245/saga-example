@@ -48,7 +48,7 @@ class App extends React.Component {
 
   getSavedState = async () => {
     const token = await AsyncStorage.getItem('token');
-
+    console.log(token);
     if (token) {
       AuthModel.setToken(token);
     }
