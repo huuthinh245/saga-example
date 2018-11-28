@@ -1,5 +1,4 @@
 import Immutable from 'immutable';
-import { createSelector } from 'reselect';
 import { authTypes } from '../actions/auth';
 
 const initialState = Immutable.fromJS({

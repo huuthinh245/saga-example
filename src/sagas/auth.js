@@ -2,17 +2,15 @@ import { all, call, put, takeLatest, fork } from 'redux-saga/effects';
 import { AsyncStorage } from 'react-native';
 
 import { authTypes, authAPI } from '../actions/auth';
-import { _alert, alertTitles, alertContents } from '../utils/alert';
+import { _alert, alertTitles } from '../utils/alert';
 import { goToHome } from '../navigation/actions';
 import AuthModel from '../models/Auth';
 
 function* getMe({ payload }) {
   const { token } = payload;
-  console.log(token);
   try {
     const resp = yield call(authAPI.getMe.bind(null, { token }));
     const { data } = resp;
-    console.log(resp);
     // timeout or not responding ...
     if (parseInt(data.errorCode, 0) === 200) {
       AuthModel.setId(data.result.idSocieteUtilisateur);
@@ -39,7 +37,6 @@ function* getToken({ payload }) {
     // timeout or not responding ...
     if (parseInt(data.errorCode, 0) === 200) {
       const { token } = data;
-      console.log(token);
       AuthModel.setToken(token);
       AsyncStorage.setItem('token', token);
       yield put({ type: authTypes.GET_TOKEN_SUCCESS });

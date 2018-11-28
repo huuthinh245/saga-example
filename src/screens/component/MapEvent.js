@@ -44,7 +44,6 @@ export default class MapEvent extends Component {
     this._map.setIndoorActiveLevelIndex(5);
   };
   render() {
-    console.log(this.props);
     return (
       <View style={{ flex: 1 }}>
         <SafeAreaView style={styles.header}>
