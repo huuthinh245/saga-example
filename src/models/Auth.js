@@ -1,9 +1,9 @@
 export default class Auth {
   static savedInstance = null;
 
-  token = undefined;
+  token = null;
 
-  id = undefined;
+  id = null;
 
   /**
    * @returns {Auth}

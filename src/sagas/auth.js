@@ -2,7 +2,7 @@ import { all, call, put, takeLatest, fork } from 'redux-saga/effects';
 import { AsyncStorage } from 'react-native';
 
 import { authTypes, authAPI } from '../actions/auth';
-import { _alert, alertTitles, alertContents } from '../utils/alert';
+import { _alert, alertTitles } from '../utils/alert';
 import { goToHome } from '../navigation/actions';
 import AuthModel from '../models/Auth';
 

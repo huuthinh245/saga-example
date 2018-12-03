@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Dimensions, Image } from 'react-native';
-import { responsiveFont } from 'PremiumContact/overrideDefaultComponentsProps';
+import { View, Text, StyleSheet, Dimensions, Image } from 'react-native';
+import { responsiveFont } from 'PremiumContact/overrideDefaultComponentsProps'; // eslint-disable-line
 
 const { width } = Dimensions.get('window');
 

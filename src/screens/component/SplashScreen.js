@@ -13,7 +13,7 @@ class SplashScreen extends Component {
     const token = AuthModel.getToken();
     if (isConnected && token) {
       dispatch(authActionsToDispatch.getMe(token));
-    }else {
+    } else {
       goToAuth();
     }
   }
@@ -22,22 +22,26 @@ class SplashScreen extends Component {
     const { isConnected } = this.props;
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Image
-          source={img}
-          resizeMode="stretch"
-        />
+        <Image source={img} resizeMode="stretch" />
         {!isConnected && (
-          <Text style={{ position: 'absolute', bottom: 20, color: '#fff', backgroundColor: '#000', padding: 10, borderRadius: 3 }}>
-          No network connection
+          <Text
+            style={{
+              position: 'absolute',
+              bottom: 20,
+              color: '#fff',
+              backgroundColor: '#000',
+              padding: 10,
+              borderRadius: 3
+            }}
+          >
+            No network connection
           </Text>
         )}
-
-        
       </View>
     );
   }
 }
 
 export default connect(state => ({
-  isConnected: connectionSelector(state).isConnected,
+  isConnected: connectionSelector(state).isConnected
 }))(SplashScreen);

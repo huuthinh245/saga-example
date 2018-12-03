@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, TouchableOpacity, Dimensions, StyleSheet, SafeAreaView, Text } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { connect } from 'react-redux';
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
+import MapView, { PROVIDER_GOOGLE, Polyline } from 'react-native-maps';
 import { popScreen, pushScreen } from '../../navigation/actions';
 import { screens } from '..';
 import Header from '../elements/Header';
@@ -44,7 +44,6 @@ export default class MapEvent extends Component {
     this._map.setIndoorActiveLevelIndex(5);
   };
   render() {
-    console.log(this.props);
     return (
       <View style={{ flex: 1 }}>
         <SafeAreaView style={styles.header}>
