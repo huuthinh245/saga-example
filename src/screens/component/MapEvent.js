@@ -17,7 +17,7 @@ const LATITUDE_DELTA = 0.0922;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
 export default class MapEvent extends Component {
-  showCallout = () => {
+  _showCallout = () => {
     this.myMarker.showCallout();
   };
 
@@ -40,7 +40,7 @@ export default class MapEvent extends Component {
     Alert.alert('Indoor building focused', msg);
   };
 
-  setIndoorLevel = () => {
+  _setIndoorLevel = () => {
     this._map.setIndoorActiveLevelIndex(5);
   };
   render() {
@@ -62,7 +62,7 @@ export default class MapEvent extends Component {
             }}
             maxZoomLevel={100}
             zoomControlEnabled
-            onRegionChangeComplete={this.showCallout}
+            onRegionChangeComplete={this._showCallout}
             ref={_map => {
               this._map = _map;
             }}
@@ -86,7 +86,7 @@ export default class MapEvent extends Component {
               </MapView.Callout>
             </MapView.Marker>
           </MapView>
-          <TouchableOpacity style={styles.buttonFilter} onPress={this.setIndoorLevel}>
+          <TouchableOpacity style={styles.buttonFilter} onPress={this._setIndoorLevel}>
             <MaterialCommunityIcons name="tune" size={26} color="#000" style={styles.icon} />
           </TouchableOpacity>
           <TouchableOpacity style={styles.buttonCenter} onPress={this._reCenter}>

@@ -35,7 +35,7 @@ const authActionsToDispatch = {
     type: authTypes.GET_TOKEN,
     payload: { username, password, onSuccess, onError }
   }),
-  getMe: (token) => ({
+  getMe: token => ({
     type: authTypes.GET_ME,
     payload: { token }
   }),
@@ -61,7 +61,7 @@ const authAPI = {
   },
   getMe: ({ token }) => {
     const config = {
-      headers: { strToken: token },
+      headers: { strToken: token }
     };
     return api.post('login', null, config);
   }

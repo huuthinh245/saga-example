@@ -8,11 +8,9 @@ import AuthModel from '../models/Auth';
 
 function* getMe({ payload }) {
   const { token } = payload;
-  console.log(token);
   try {
     const resp = yield call(authAPI.getMe.bind(null, { token }));
     const { data } = resp;
-    console.log(resp);
     // timeout or not responding ...
     if (parseInt(data.errorCode, 0) === 200) {
       AuthModel.setId(data.result.idSocieteUtilisateur);
@@ -34,12 +32,14 @@ function* getMe({ payload }) {
 function* getToken({ payload }) {
   try {
     const { username, password } = payload;
-    const resp = yield call(authAPI.getToken.bind(null, { username, password }));
+    const resp = yield call(authAPI.getToken, { username, password });
     const { data } = resp;
     // timeout or not responding ...
-    if (parseInt(data.errorCode, 0) === 200) {
+    if (!data) {
+      _alert(alertTitles.error, resp.problem);
+      yield put({ type: authTypes.GET_TOKEN_FAILURE });
+    } else if (parseInt(data.errorCode, 0) === 200) {
       const { token } = data;
-      console.log(token);
       AuthModel.setToken(token);
       AsyncStorage.setItem('token', token);
       yield put({ type: authTypes.GET_TOKEN_SUCCESS });
@@ -49,8 +49,8 @@ function* getToken({ payload }) {
       yield put({ type: authTypes.GET_TOKEN_FAILURE });
     }
   } catch (err) {
-    _alert(alertTitles.error, err.message);
-    yield put({ type: 'ERROR' });
+    _alert(alertTitles.error, err.problem);
+    yield put({ type: authTypes.GET_TOKEN_FAILURE });
   }
 }
 export function* watchLogin() {
@@ -61,8 +61,5 @@ export function* watchLGetMe() {
   yield takeLatest(authTypes.GET_ME, getMe);
 }
 export function* authSaga() {
-  yield all([
-    fork(watchLogin),
-    fork(watchLGetMe)
-  ]);
+  yield all([fork(watchLogin), fork(watchLGetMe)]);
 }
